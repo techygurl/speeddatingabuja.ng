@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speed Dating In Abuja</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffdf6;
+      color: #111;
+    }
+
+    img.logo {
+      max-width: 160px;
+      height: auto;
+      display: block;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    header {
+      background: #f8e7ce;
+      color: #000;
+      padding: 3rem 1rem 2rem 1rem;
+      text-align: center;
+      border-bottom: 2px solid #000;
+    }
+
+    header img.logo {
+      max-width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #111;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      box-shadow: 0 8px 0 #444;
+      transition: all 0.2s ease;
+    }
+
+    .cta-button:hover {
+      box-shadow: 0 4px 0 #222;
+      transform: translateY(2px);
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .highlight-box {
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      margin-bottom: 2rem;
+    }
+
+    form input,
+    form select,
+    form button {
+      display: block;
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background: #444;
+    }
+
+    .info-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-section ul {
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Logo" class="logo" />
+    <h1>Speed Dating In Abuja Launch 💘</h1>
+    <p>Happening every 3rd Thursday of the month — real people, elegant vibes, genuine matches.</p>
+    <p><strong>1st drink on us + 10 curated 6-minute dates</strong></p>
+
+    <!-- NEW 3D HOW IT WORKS BUTTON -->
+    <a href="how-it-works.html" class="cta-button">How It Works</a>
+  </header>
+
+  <main>
+    <div class="highlight-box">
+      <h2>Join the Waitlist</h2>
+      <form id="waitlist-form">
+        <input type="text" name="fullName" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+
+        <select name="ageRange" required>
+          <option value="" disabled selected>Age Range</option>
+          <option>25–34</option>
+          <option>35–44</option>
+          <option>45+</option>
+        </select>
+
+        <select name="gender" required>
+          <option value="" disabled selected>Gender</option>
+          <option>Female</option>
+          <option>Male</option>
+        </select>
+
+        <button type="submit">Get Notified First</button>
+      </form>
+    </div>
+
+    <div class="info-section">
+      <h2>What You Get</h2>
+      <ul>
+        <li>10+ curated 6-minute dates with amazing people</li>
+        <li>1 welcome drink</li>
+        <li>Fun conversation starters & social games</li>
+        <li>Post-event match & follow-up</li>
+        <li>Exclusively in ABUJA</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Speed Dating Abuja. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init({
+        publicKey: "P6RHVChO49GffUJTH",
+      });
+    })();
+
+    const form = document.getElementById("waitlist-form");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const fullName = form.fullName.value;
+      const email = form.email.value;
+      const phone = form.phone.value;
+      const ageRange = form.ageRange.value;
+      const gender = form.gender.value;
+
+      emailjs.send("service_e06lxiq", "template_zimnx95", {
+        to_name: fullName,
+        to_email: email,
+        to_phone: phone,
+        to_age: ageRange,
+        to_gender: gender
+      }).then(function() {
+        window.location.href = "thank.html";
+      }).catch(function(error) {
+        alert("Oops! Could not send the form.");
+        console.error("EmailJS Error:", error);
+      });
+    });
+  </script>
+</body>
+</html>
